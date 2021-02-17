@@ -95,12 +95,7 @@ class Socket extends EventEmitter {
             ? int.parse(window.location.port)
             : (this.secure ? 443 : 80))*/
         ;
-    var query = opts['query'] ?? {};
-    if (query is String) {
-      this.query = decode(query);
-    } else if (query is Map) {
-      this.query = query;
-    }
+    this.query = {"token": "${opts['token']}"};
 
     upgrade = opts['upgrade'] != false;
     path = (opts['path'] ?? '/engine.io')
